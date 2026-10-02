@@ -4,13 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tambang Safety System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <div id="loginScreen" class="login-screen">
+      <div class="login-card">
+        <div class="login-brand">
+          <div class="brand-icon">T</div>
+          <div>
+            <p class="eyebrow">Tambang Safety</p>
+            <h2>Security Access</h2>
+          </div>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <label>
+            Username
+            <input type="text" id="username" placeholder="admin" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="password" placeholder="••••••••" required />
+          </label>
+          <button type="submit" class="primary-btn full-width">Masuk</button>
+          <p class="login-hint">Demo login: admin / admin123</p>
+        </form>
+      </div>
+    </div>
+
+    <div id="appShell" class="app-shell hidden">
       <aside class="sidebar">
         <div class="brand-box">
           <div class="brand-icon">T</div>
@@ -33,6 +58,8 @@
           <h3>Shift Hari Ini</h3>
           <p>Operasional aktif. Semua zona utama diawasi supervisor.</p>
         </div>
+
+        <button id="logoutBtn" class="secondary-btn">Keluar</button>
       </aside>
 
       <main class="main-content">
@@ -41,7 +68,10 @@
             <p class="eyebrow">Monitoring Kecelamatan</p>
             <h2>Dashboard Keselamatan Tambang</h2>
           </div>
-          <button class="primary-btn" id="resetDataBtn">Reset Data Demo</button>
+          <div class="topbar-actions">
+            <button class="secondary-btn" id="refreshBtn">Refresh</button>
+            <button class="primary-btn" id="resetDataBtn">Reset Data Demo</button>
+          </div>
         </header>
 
         <section class="stats-grid">
@@ -78,7 +108,7 @@
               <div class="field-row">
                 <label>
                   Nama Karyawan
-                  <input type="text" name="name" placeholder="Contoh: Rahmat S" required>
+                  <input type="text" name="name" placeholder="Contoh: Rahmat S" required />
                 </label>
                 <label>
                   Divisi
@@ -150,7 +180,7 @@
             <form id="ppeForm" class="stack-form compact-form">
               <label>
                 Nama Karyawan
-                <input type="text" name="workerName" placeholder="Nama pekerja" required>
+                <input type="text" name="workerName" placeholder="Nama pekerja" required />
               </label>
               <label>
                 Kategori PPE
