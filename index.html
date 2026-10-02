@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambang Safety System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-icon">T</div>
+          <div>
+            <h1>Tambang Safety</h1>
+            <p>Safety Control Center</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item active" href="#overview">Overview</a>
+          <a class="nav-item" href="#reports">Laporan</a>
+          <a class="nav-item" href="#ppe">PPE</a>
+          <a class="nav-item" href="#training">Pelatihan</a>
+          <a class="nav-item" href="#employees">Karyawan</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="label danger">Status</span>
+          <h3>Shift Hari Ini</h3>
+          <p>Operasional aktif. Semua zona utama diawasi supervisor.</p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar" id="overview">
+          <div>
+            <p class="eyebrow">Monitoring Kecelamatan</p>
+            <h2>Dashboard Keselamatan Tambang</h2>
+          </div>
+          <button class="primary-btn" id="resetDataBtn">Reset Data Demo</button>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card accent-blue">
+            <div class="stat-label">Total Karyawan</div>
+            <div class="stat-value" id="totalEmployees">0</div>
+            <div class="stat-foot">Personil aktif</div>
+          </article>
+          <article class="stat-card accent-green">
+            <div class="stat-label">Laporan Insiden</div>
+            <div class="stat-value" id="totalIncidents">0</div>
+            <div class="stat-foot">Bulan ini</div>
+          </article>
+          <article class="stat-card accent-orange">
+            <div class="stat-label">PPE Tercukupi</div>
+            <div class="stat-value" id="ppeCompliance">0%</div>
+            <div class="stat-foot">Kesesuaian alat</div>
+          </article>
+          <article class="stat-card accent-red">
+            <div class="stat-label">Pelatihan Valid</div>
+            <div class="stat-value" id="trainingValid">0%</div>
+            <div class="stat-foot">Sertifikasi siap</div>
+          </article>
+        </section>
+
+        <section class="two-column grid-top">
+          <div class="panel" id="reports">
+            <div class="panel-header">
+              <h3>Form Laporan Insiden</h3>
+              <span class="badge badge-danger">Realtime</span>
+            </div>
+
+            <form id="incidentForm" class="stack-form">
+              <div class="field-row">
+                <label>
+                  Nama Karyawan
+                  <input type="text" name="name" placeholder="Contoh: Rahmat S" required>
+                </label>
+                <label>
+                  Divisi
+                  <select name="department" required>
+                    <option value="">Pilih divisi</option>
+                    <option>Penambangan</option>
+                    <option>Pengolahan</option>
+                    <option>Logistik</option>
+                    <option>Maintenance</option>
+                    <option>HSE</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Jenis Insiden
+                  <select name="type" required>
+                    <option value="">Pilih jenis</option>
+                    <option>Near Miss</option>
+                    <option>Kecelakaan Ringan</option>
+                    <option>Kecelakaan Berat</option>
+                    <option>Kondisi Bahaya</option>
+                  </select>
+                </label>
+                <label>
+                  Tingkat Risiko
+                  <select name="severity" required>
+                    <option value="">Pilih tingkat</option>
+                    <option>Rendah</option>
+                    <option>Sedang</option>
+                    <option>Tinggi</option>
+                    <option>Kritis</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Deskripsi
+                <textarea name="description" rows="3" placeholder="Jelaskan kejadian, lokasi, dan penyebab yang teridentifikasi" required></textarea>
+              </label>
+
+              <label>
+                Tindakan Penanganan
+                <textarea name="action" rows="3" placeholder="Tuliskan tindakan segera dan pencegahan yang dilakukan" required></textarea>
+              </label>
+
+              <button class="primary-btn" type="submit">Simpan Laporan</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Ringkasan Risiko</h3>
+              <span class="badge badge-warning">Hari ini</span>
+            </div>
+
+            <div class="risk-list" id="riskList"></div>
+          </div>
+        </section>
+
+        <section class="two-column">
+          <div class="panel" id="ppe">
+            <div class="panel-header">
+              <h3>Checklist PPE</h3>
+              <span class="badge badge-success">Safety Check</span>
+            </div>
+
+            <form id="ppeForm" class="stack-form compact-form">
+              <label>
+                Nama Karyawan
+                <input type="text" name="workerName" placeholder="Nama pekerja" required>
+              </label>
+              <label>
+                Kategori PPE
+                <select name="ppeCategory" required>
+                  <option value="">Pilih kategori</option>
+                  <option>Helm</option>
+                  <option>Sabuk Pengaman</option>
+                  <option>Sepatu Safety</option>
+                  <option>Masker</option>
+                  <option>Sarung Tangan</option>
+                  <option>Pelindung Mata</option>
+                </select>
+              </label>
+              <label>
+                Status
+                <select name="ppeStatus" required>
+                  <option value="">Pilih status</option>
+                  <option value="Baik">Baik</option>
+                  <option value="Perlu Diganti">Perlu Diganti</option>
+                  <option value="Belum Lengkap">Belum Lengkap</option>
+                </select>
+              </label>
+              <button class="primary-btn" type="submit">Catat PPE</button>
+            </form>
+
+            <div class="mini-table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Karyawan</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="ppeTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel" id="training">
+            <div class="panel-header">
+              <h3>Pelatihan & Sertifikasi</h3>
+              <span class="badge badge-info">Masa Berlaku</span>
+            </div>
+
+            <div id="trainingList" class="training-list"></div>
+          </div>
+        </section>
+
+        <section class="panel" id="employees">
+          <div class="panel-header">
+            <h3>Daftar Karyawan</h3>
+            <span class="badge badge-primary">Personil</span>
+          </div>
+          <div class="mini-table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Divisi</th>
+                  <th>Shift</th>
+                  <th>Status</th>
+                  <th>Last Check</th>
+                </tr>
+              </thead>
+              <tbody id="employeeTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
