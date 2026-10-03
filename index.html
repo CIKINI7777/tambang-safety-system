@@ -3,227 +3,270 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tambang Safety System</title>
+    <title>PT. KNE | Safety Storytelling Platform</title>
+    <meta
+      name="description"
+      content="Platform bercerita PT. KNE untuk membangun koneksi emosional, meningkatkan kesadaran K3, dan mendorong budaya kerja aman."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="brand-box">
-          <div class="brand-icon">T</div>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">K</div>
           <div>
-            <h1>Tambang Safety</h1>
-            <p>Safety Control Center</p>
+            <p class="eyebrow">PT. KNE</p>
+            <h1>Stories for Safety</h1>
           </div>
         </div>
 
-        <nav class="nav">
-          <a class="nav-item active" href="#overview">Overview</a>
-          <a class="nav-item" href="#reports">Laporan</a>
-          <a class="nav-item" href="#ppe">PPE</a>
-          <a class="nav-item" href="#training">Pelatihan</a>
-          <a class="nav-item" href="#employees">Karyawan</a>
+        <nav class="main-nav">
+          <a href="#stories">Cerita</a>
+          <a href="#impact">Dampak</a>
+          <a href="#voices">Suara</a>
+          <a href="#share">Bagikan</a>
         </nav>
+      </header>
 
-        <div class="sidebar-card">
-          <span class="label danger">Status</span>
-          <h3>Shift Hari Ini</h3>
-          <p>Operasional aktif. Semua zona utama diawasi supervisor.</p>
-        </div>
-      </aside>
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="chip">Koneksi Emosional</span>
+            <h2>Satu cerita, satu tindakan, satu nyawa.</h2>
+            <p>
+              Platform ini adalah ruang bagi karyawan PT. KNE untuk berbagi pengalaman,
+              belajar dari dekat celaka, menghargai tindakan aman, dan menumbuhkan budaya
+              kerja yang penuh kepedulian.
+            </p>
 
-      <main class="main-content">
-        <header class="topbar" id="overview">
+            <div class="hero-actions">
+              <a class="primary-btn" href="#share">Bagikan Cerita</a>
+              <a class="secondary-btn" href="#stories">Lihat Cerita</a>
+            </div>
+
+            <div class="mini-stats">
+              <div>
+                <strong>245</strong>
+                <span>Hari tanpa kecelakaan</span>
+              </div>
+              <div>
+                <strong>86%</strong>
+                <span>Kesadaran K3</span>
+              </div>
+              <div>
+                <strong>1,240</strong>
+                <span>Suara terlibat</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="spotlight">
+              <span class="label danger">Cerita utama</span>
+              <h3>“Saya tidak ingin orang lain harus kehilangan momen bersama keluarga.”</h3>
+              <p>
+                Kisah dari supervisor tambang yang membagikan pengalaman near miss yang
+                mengubah cara tim bekerja.
+              </p>
+            </div>
+            <div class="quote-box">
+              “Keselamatan bukan sekadar SOP. Itu adalah bentuk kasih dan tanggung jawab.”
+            </div>
+          </div>
+        </section>
+
+        <section class="impact-grid" id="impact">
+          <article class="metric-card blue">
+            <p class="metric-label">Cerita dibagikan</p>
+            <h3 id="storyCount">0</h3>
+            <span>Dalam 30 hari terakhir</span>
+          </article>
+
+          <article class="metric-card green">
+            <p class="metric-label">Near miss dilaporkan</p>
+            <h3>127</h3>
+            <span>Meningkat 34%</span>
+          </article>
+
+          <article class="metric-card orange">
+            <p class="metric-label">PPE compliance</p>
+            <h3>92%</h3>
+            <span>Target 95%</span>
+          </article>
+
+          <article class="metric-card red">
+            <p class="metric-label">Komitmen tim</p>
+            <h3>98%</h3>
+            <span>Siap ikut program</span>
+          </article>
+        </section>
+
+        <section class="section-header">
           <div>
-            <p class="eyebrow">Monitoring Kecelamatan</p>
-            <h2>Dashboard Keselamatan Tambang</h2>
+            <span class="chip muted">Cerita yang menginspirasi</span>
+            <h2>Platform bercerita yang membangun empati dan aksi</h2>
           </div>
-          <div class="topbar-actions">
-            <button class="secondary-btn" id="refreshBtn">Refresh</button>
-            <button class="primary-btn" id="resetDataBtn">Reset Data Demo</button>
-          </div>
-        </header>
-
-        <section class="stats-grid">
-          <article class="stat-card accent-blue">
-            <div class="stat-label">Total Karyawan</div>
-            <div class="stat-value" id="totalEmployees">0</div>
-            <div class="stat-foot">Personil aktif</div>
-          </article>
-          <article class="stat-card accent-green">
-            <div class="stat-label">Laporan Insiden</div>
-            <div class="stat-value" id="totalIncidents">0</div>
-            <div class="stat-foot">Bulan ini</div>
-          </article>
-          <article class="stat-card accent-orange">
-            <div class="stat-label">PPE Tercukupi</div>
-            <div class="stat-value" id="ppeCompliance">0%</div>
-            <div class="stat-foot">Kesesuaian alat</div>
-          </article>
-          <article class="stat-card accent-red">
-            <div class="stat-label">Pelatihan Valid</div>
-            <div class="stat-value" id="trainingValid">0%</div>
-            <div class="stat-foot">Sertifikasi siap</div>
-          </article>
-        </section>
-
-        <section class="two-column grid-top">
-          <div class="panel" id="reports">
-            <div class="panel-header">
-              <h3>Form Laporan Insiden</h3>
-              <span class="badge badge-danger">Realtime</span>
-            </div>
-
-            <form id="incidentForm" class="stack-form">
-              <div class="field-row">
-                <label>
-                  Nama Karyawan
-                  <input type="text" name="name" placeholder="Contoh: Rahmat S" required />
-                </label>
-                <label>
-                  Divisi
-                  <select name="department" required>
-                    <option value="">Pilih divisi</option>
-                    <option>Penambangan</option>
-                    <option>Pengolahan</option>
-                    <option>Logistik</option>
-                    <option>Maintenance</option>
-                    <option>HSE</option>
-                  </select>
-                </label>
-              </div>
-
-              <div class="field-row">
-                <label>
-                  Jenis Insiden
-                  <select name="type" required>
-                    <option value="">Pilih jenis</option>
-                    <option>Near Miss</option>
-                    <option>Kecelakaan Ringan</option>
-                    <option>Kecelakaan Berat</option>
-                    <option>Kondisi Bahaya</option>
-                  </select>
-                </label>
-                <label>
-                  Tingkat Risiko
-                  <select name="severity" required>
-                    <option value="">Pilih tingkat</option>
-                    <option>Rendah</option>
-                    <option>Sedang</option>
-                    <option>Tinggi</option>
-                    <option>Kritis</option>
-                  </select>
-                </label>
-              </div>
-
-              <label>
-                Deskripsi
-                <textarea name="description" rows="3" placeholder="Jelaskan kejadian, lokasi, dan penyebab yang teridentifikasi" required></textarea>
-              </label>
-
-              <label>
-                Tindakan Penanganan
-                <textarea name="action" rows="3" placeholder="Tuliskan tindakan segera dan pencegahan yang dilakukan" required></textarea>
-              </label>
-
-              <button class="primary-btn" type="submit">Simpan Laporan</button>
-            </form>
-          </div>
-
-          <div class="panel">
-            <div class="panel-header">
-              <h3>Ringkasan Risiko</h3>
-              <span class="badge badge-warning">Hari ini</span>
-            </div>
-
-            <div class="risk-list" id="riskList"></div>
+          <div class="header-action">
+            <button class="ghost-btn active" data-filter="all">Semua</button>
+            <button class="ghost-btn" data-filter="apd">APD</button>
+            <button class="ghost-btn" data-filter="leadership">Leadership</button>
+            <button class="ghost-btn" data-filter="family">Keluarga</button>
+            <button class="ghost-btn" data-filter="near-miss">Near Miss</button>
           </div>
         </section>
 
-        <section class="two-column">
-          <div class="panel" id="ppe">
-            <div class="panel-header">
-              <h3>Checklist PPE</h3>
-              <span class="badge badge-success">Safety Check</span>
-            </div>
+        <section class="story-grid" id="stories"></section>
 
-            <form id="ppeForm" class="stack-form compact-form">
+        <section class="value-grid">
+          <div class="value-card">
+            <span class="value-icon">💬</span>
+            <h3>Empati</h3>
+            <p>Karyawan belajar bahwa keselamatan bukan sekadar aturan, tapi bentuk kepedulian.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">🛡️</span>
+            <h3>Kesadaran</h3>
+            <p>Setiap pengalaman mengajarkan bahwa tindakan kecil hari ini dapat mencegah tragedi esok.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">🤝</span>
+            <h3>Kolaborasi</h3>
+            <p>Tim bekerja sama, saling mengingatkan, dan membangun budaya aman secara bersama-sama.</p>
+          </div>
+        </section>
+
+        <section class="community" id="voices">
+          <div class="section-header aligned">
+            <div>
+              <span class="chip muted">Suara karyawan</span>
+              <h2>Yang mereka rasakan saat berbagi cerita</h2>
+            </div>
+          </div>
+
+          <div class="voice-grid">
+            <article class="voice-card">
+              <p>
+                “Cerita saya membuat saya sadar bahwa APD bukan beban, tetapi perlindungan untuk keluarga di rumah.”
+              </p>
+              <div class="voice-meta">
+                <strong>Rahmat S.</strong>
+                <span>Supervisor PT. KNE</span>
+              </div>
+            </article>
+
+            <article class="voice-card">
+              <p>
+                “Saya merasa lebih berani melaporkan near miss setelah mendengar kisah teman. Ini membuat saya sadar bahwa laporan itu menyelamatkan.”
+              </p>
+              <div class="voice-meta">
+                <strong>Sari M.</strong>
+                <span>HSE Officer</span>
+              </div>
+            </article>
+
+            <article class="voice-card">
+              <p>
+                “Ketika saya membagikan cerita, saya tidak hanya berbicara tentang pekerjaan. Saya berbicara tentang masa depan anak saya.”
+              </p>
+              <div class="voice-meta">
+                <strong>Doni K.</strong>
+                <span>Teknisi</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="share-panel" id="share">
+          <div class="share-text">
+            <span class="chip muted">Bagikan cerita Anda</span>
+            <h2>Setiap kisah bisa menjadi pengingat bagi tim.</h2>
+            <p>
+              Ceritakan pengalaman nyata Anda. Apakah itu tentang APD, SOP, leadership,
+              keluarga, near miss, atau momen yang mengubah perilaku kerja Anda.
+            </p>
+          </div>
+
+          <form id="storyForm" class="story-form">
+            <div class="field-row">
               <label>
-                Nama Karyawan
-                <input type="text" name="workerName" placeholder="Nama pekerja" required />
+                Nama
+                <input type="text" name="name" placeholder="Contoh: Rahmat S" required />
               </label>
               <label>
-                Kategori PPE
-                <select name="ppeCategory" required>
-                  <option value="">Pilih kategori</option>
-                  <option>Helm</option>
-                  <option>Sabuk Pengaman</option>
-                  <option>Sepatu Safety</option>
-                  <option>Masker</option>
-                  <option>Sarung Tangan</option>
-                  <option>Pelindung Mata</option>
+                Divisi
+                <select name="department" required>
+                  <option value="">Pilih divisi</option>
+                  <option>Penambangan</option>
+                  <option>Maintenance</option>
+                  <option>HSE</option>
+                  <option>Pengolahan</option>
+                  <option>Logistik</option>
                 </select>
               </label>
+            </div>
+
+            <div class="field-row">
               <label>
-                Status
-                <select name="ppeStatus" required>
-                  <option value="">Pilih status</option>
-                  <option value="Baik">Baik</option>
-                  <option value="Perlu Diganti">Perlu Diganti</option>
-                  <option value="Belum Lengkap">Belum Lengkap</option>
+                Tema cerita
+                <select name="tag" required>
+                  <option value="">Pilih tema</option>
+                  <option value="apd">APD</option>
+                  <option value="leadership">Leadership</option>
+                  <option value="family">Keluarga</option>
+                  <option value="near-miss">Near Miss</option>
+                  <option value="sop">SOP</option>
                 </select>
               </label>
-              <button class="primary-btn" type="submit">Catat PPE</button>
-            </form>
 
-            <div class="mini-table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Karyawan</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="ppeTableBody"></tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="panel" id="training">
-            <div class="panel-header">
-              <h3>Pelatihan & Sertifikasi</h3>
-              <span class="badge badge-info">Masa Berlaku</span>
+              <label>
+                Judul singkat
+                <input type="text" name="title" placeholder="Contoh: Saat saya berhenti karena sadar" required />
+              </label>
             </div>
 
-            <div id="trainingList" class="training-list"></div>
-          </div>
-        </section>
+            <label>
+              Cerita Anda
+              <textarea
+                name="story"
+                rows="5"
+                placeholder="Ceritakan pengalaman Anda yang memengaruhi cara Anda bekerja aman..."
+                required
+              ></textarea>
+            </label>
 
-        <section class="panel" id="employees">
-          <div class="panel-header">
-            <h3>Daftar Karyawan</h3>
-            <span class="badge badge-primary">Personil</span>
-          </div>
-          <div class="mini-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nama</th>
-                  <th>Divisi</th>
-                  <th>Shift</th>
-                  <th>Status</th>
-                  <th>Last Check</th>
-                </tr>
-              </thead>
-              <tbody id="employeeTableBody"></tbody>
-            </table>
-          </div>
+            <button class="primary-btn" type="submit">Bagikan ke platform</button>
+          </form>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>PT. KNE</strong>
+          <span>Zero Accident Culture</span>
+        </div>
+        <p>“Bekerja dengan aman, pulang dengan selamat.”</p>
+      </footer>
+    </div>
+
+    <div class="modal hidden" id="storyModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+        <button class="modal-close" data-close="true" aria-label="Tutup modal">×</button>
+        <span class="chip muted" id="storyTag">Cerita</span>
+        <h3 id="storyTitle">Judul</h3>
+        <div class="modal-meta">
+          <span id="storyAuthor">Nama</span>
+          <span id="storyDepartment">Divisi</span>
+        </div>
+        <p id="storyContent"></p>
+      </div>
     </div>
 
     <script src="script.js"></script>
