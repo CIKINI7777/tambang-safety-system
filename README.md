@@ -1,269 +1,111 @@
-const STORAGE_KEYS = {
-  employees: 'tambang-safety-employees',
-  incidents: 'tambang-safety-incidents',
-  ppe: 'tambang-safety-ppe',
-  training: 'tambang-safety-training',
-};
+# Tambang Safety System
 
+Dashboard keamanan tambang sederhana berbasis HTML, CSS, dan JavaScript yang dapat di-deploy secara gratis tanpa autentikasi/login. Aplikasi ini dibuat untuk memantau data keselamatan kerja seperti laporan insiden, checklist PPE, pelatihan, dan status karyawan.
+
+## Fitur utama
+- Dashboard KPI keselamatan kerja
+- Form laporan insiden
+- Checklist PPE
+- Pelatihan dan sertifikasi
+- Daftar karyawan dan status kerja
+- Simpan data di browser menggunakan localStorage
+- Tanpa backend, tanpa database, tanpa login/password
+
+## Teknologi
+- HTML
+- CSS
+- JavaScript
+- LocalStorage (browser)
+
+## Struktur project
+```text
+.
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+├── dashboard/
+│   ├── README.md
+│   └── database-structure.md
+├── videos/
+│   └── README.md
+├── LICENSE
+└── .gitignore
+```
+
+## Cara menjalankan lokal
+### Opsi 1: buka langsung file HTML
+- Buka file `index.html` di browser.
+- Ini paling sederhana dan cocok untuk demo cepat.
+
+### Opsi 2: jalankan server lokal
+```bash
+python -m http.server 8000
+```
+Lalu buka:
+```text
+http://localhost:8000
+```
+
+## Cara deploy gratis tanpa login/password
+Aplikasi ini bersifat statis, jadi sangat cocok untuk deployment gratis tanpa autentikasi.
+
+### 1) GitHub Pages (gratis)
+1. Upload project ke GitHub.
+2. Buka repository Anda.
+3. Masuk ke `Settings` -> `Pages`.
+4. Pilih source:
+   - Branch: `main`
+   - Folder: `/root`
+5. Save.
+6. Link deploy akan dibuat otomatis seperti:
+```text
+https://username.github.io/nama-repo/
+```
+
+### 2) Netlify (gratis)
+1. Masuk ke https://www.netlify.com
+2. Pilih `Add new site` -> `Deploy manually`
+3. Drag-and-drop folder project Anda
+4. Netlify akan otomatis membuat URL publik
+
+### 3) Vercel (gratis)
+1. Import repository ke Vercel
+2. Pilih framework: `Other` atau `Static` project
+3. Deploy tanpa konfigurasi khusus
+
+## Catatan penting
+- Aplikasi ini tidak memiliki login/password karena dibuat untuk deployment publik dan demo sederhana.
+- Semua data disimpan di browser menggunakan `localStorage`.
+- Data akan hilang jika browser membersihkan data penyimpanan lokal.
+
+## Customize data demo
+File `script.js` berisi data awal untuk demo. Anda bisa mengedit blok berikut:
+```js
 const defaultData = {
-  employees: [
-    { name: 'Rahmat S', department: 'Penambangan', shift: 'Pagi', status: 'Siap Kerja', lastCheck: '08:00' },
-    { name: 'Doni K', department: 'Maintenance', shift: 'Siang', status: 'Siap Kerja', lastCheck: '09:15' },
-    { name: 'Sari M', department: 'HSE', shift: 'Pagi', status: 'Perlu Review', lastCheck: '07:40' },
-    { name: 'Andi P', department: 'Logistik', shift: 'Malam', status: 'Siap Kerja', lastCheck: '10:20' },
-    { name: 'Budi H', department: 'Pengolahan', shift: 'Siang', status: 'Siap Kerja', lastCheck: '08:50' },
-  ],
-  incidents: [
-    {
-      name: 'Rahmat S',
-      department: 'Penambangan',
-      type: 'Near Miss',
-      severity: 'Tinggi',
-      description: 'Material longsor di area jalan tambang barat saat shift pagi.',
-      action: 'Area dibatasi dan pengecekan geoteknik dilakukan segera.',
-    },
-    {
-      name: 'Doni K',
-      department: 'Maintenance',
-      type: 'Kondisi Bahaya',
-      severity: 'Sedang',
-      description: 'Pipa air bocor di sekitar area produksi.',
-      action: 'Pipa segera diberhentikan sementara dan perbaikan dibantu tim teknis.',
-    },
-  ],
-  ppe: [
-    { workerName: 'Rahmat S', ppeCategory: 'Helm', ppeStatus: 'Baik' },
-    { workerName: 'Doni K', ppeCategory: 'Sepatu Safety', ppeStatus: 'Perlu Diganti' },
-    { workerName: 'Sari M', ppeCategory: 'Masker', ppeStatus: 'Baik' },
-  ],
-  training: [
-    { title: 'P3K Darurat', status: 'Valid', date: '2026-09-12', note: 'Sertifikasi aktif sampai 2027.' },
-    { title: 'JSA / Job Safety Analysis', status: 'Review', date: '2026-06-03', note: 'Perlu refresh ulang dalam 2 minggu.' },
-    { title: 'K3 Excavation', status: 'Valid', date: '2026-08-18', note: 'Sertifikasi masih berlaku.' },
-  ],
+  employees: [...],
+  incidents: [...],
+  ppe: [...],
+  training: [...],
 };
+```
 
-const loginCredentials = {
-  admin: 'admin123',
-  supervisor: 'safety2026',
-};
+## Tips deploy aman untuk demo publik
+Karena tidak ada login, pastikan:
+- data yang ditampilkan adalah data demo bukan data sensitif
+- jangan simpan informasi rahasia atau data karyawan real di localStorage
+- gunakan data dummy untuk publik showcase
 
-function isAuthenticated() {
-  return localStorage.getItem('tambangAuth') === 'true';
-}
+## Lisensi
+Project ini menggunakan lisensi MIT. Lihat file `LICENSE`.
 
-function setAuthenticated(value) {
-  localStorage.setItem('tambangAuth', String(value));
-}
+## Catatan pengembangan
+Jika Anda ingin versi yang lebih lengkap di masa depan, project ini dapat dikembangkan ke:
+- backend API
+- database PostgreSQL/MySQL
+- autentikasi admin
+- dashboard real-time
+- fitur upload foto dan laporan
 
-function loadState() {
-  const state = {};
-  Object.entries(STORAGE_KEYS).forEach(([key, storageKey]) => {
-    const item = localStorage.getItem(storageKey);
-    state[key] = item ? JSON.parse(item) : defaultData[key];
-  });
-  return state;
-}
-
-function saveState(state) {
-  Object.entries(STORAGE_KEYS).forEach(([key, storageKey]) => {
-    localStorage.setItem(storageKey, JSON.stringify(state[key]));
-  });
-}
-
-function setState(state) {
-  saveState(state);
-  renderDashboard();
-}
-
-function renderLoginState() {
-  const appShell = document.getElementById('appShell');
-  const loginScreen = document.getElementById('loginScreen');
-
-  if (isAuthenticated()) {
-    appShell.classList.remove('hidden');
-    loginScreen.classList.add('hidden');
-  } else {
-    appShell.classList.add('hidden');
-    loginScreen.classList.remove('hidden');
-  }
-}
-
-function getRiskClass(level) {
-  const normalized = level.toLowerCase();
-  if (normalized.includes('rendah')) return 'level-low';
-  if (normalized.includes('sedang')) return 'level-medium';
-  if (normalized.includes('tinggi') || normalized.includes('kritis')) return 'level-high';
-  return 'level-medium';
-}
-
-function renderStats(state) {
-  const totalEmployees = state.employees.length;
-  const totalIncidents = state.incidents.length;
-  const ppeCompliant = state.ppe.filter((item) => item.ppeStatus === 'Baik').length;
-  const trainingValid = state.training.filter((item) => item.status === 'Valid').length;
-
-  document.getElementById('totalEmployees').textContent = totalEmployees;
-  document.getElementById('totalIncidents').textContent = totalIncidents;
-
-  const ppePercentage = totalEmployees ? Math.round((ppeCompliant / totalEmployees) * 100) : 0;
-  const trainingPercentage = state.training.length ? Math.round((trainingValid / state.training.length) * 100) : 0;
-
-  document.getElementById('ppeCompliance').textContent = `${ppePercentage}%`;
-  document.getElementById('trainingValid').textContent = `${trainingPercentage}%`;
-}
-
-function renderRiskList(state) {
-  const riskList = document.getElementById('riskList');
-  const visible = state.incidents.slice(0, 3);
-
-  riskList.innerHTML = visible
-    .map(
-      (item) => `
-        <div class="risk-item">
-          <div class="risk-top">
-            <h4>${item.type}</h4>
-            <span class="risk-level ${getRiskClass(item.severity)}">${item.severity}</span>
-          </div>
-          <p><strong>${item.name}</strong> • ${item.department}</p>
-          <p>${item.description}</p>
-        </div>
-      `
-    )
-    .join('');
-}
-
-function renderPPE(state) {
-  const tbody = document.getElementById('ppeTableBody');
-  tbody.innerHTML = state.ppe
-    .slice(0, 5)
-    .map((item) => {
-      const statusClass = item.ppeStatus === 'Baik' ? 'status-ready' : item.ppeStatus === 'Perlu Diganti' ? 'status-risk' : 'status-watch';
-      return `
-        <tr>
-          <td>${item.workerName}</td>
-          <td>${item.ppeCategory}</td>
-          <td><span class="status-pill ${statusClass}">${item.ppeStatus}</span></td>
-        </tr>
-      `;
-    })
-    .join('');
-}
-
-function renderTraining(state) {
-  const list = document.getElementById('trainingList');
-  list.innerHTML = state.training
-    .map((item) => {
-      const statusClass = item.status === 'Valid' ? 'status-ready' : 'status-watch';
-      return `
-        <div class="training-item">
-          <div class="training-top">
-            <h4>${item.title}</h4>
-            <span class="status-pill ${statusClass}">${item.status}</span>
-          </div>
-          <p>${item.note}</p>
-          <p><strong>Tanggal:</strong> ${item.date}</p>
-        </div>
-      `;
-    })
-    .join('');
-}
-
-function renderEmployees(state) {
-  const tbody = document.getElementById('employeeTableBody');
-  tbody.innerHTML = state.employees
-    .map((employee) => {
-      const statusClass = employee.status === 'Siap Kerja' ? 'status-ready' : 'status-watch';
-      return `
-        <tr>
-          <td>${employee.name}</td>
-          <td>${employee.department}</td>
-          <td>${employee.shift}</td>
-          <td><span class="status-pill ${statusClass}">${employee.status}</span></td>
-          <td>${employee.lastCheck}</td>
-        </tr>
-      `;
-    })
-    .join('');
-}
-
-function renderDashboard() {
-  const state = loadState();
-  renderStats(state);
-  renderRiskList(state);
-  renderPPE(state);
-  renderTraining(state);
-  renderEmployees(state);
-}
-
-document.getElementById('loginForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const username = document.getElementById('username').value.trim().toLowerCase();
-  const password = document.getElementById('password').value.trim();
-
-  if (loginCredentials[username] && loginCredentials[username] === password) {
-    setAuthenticated(true);
-    renderLoginState();
-    renderDashboard();
-    event.target.reset();
-  } else {
-    alert('Username atau password salah. Gunakan demo login: admin / admin123');
-  }
-});
-
-document.getElementById('logoutBtn').addEventListener('click', () => {
-  setAuthenticated(false);
-  renderLoginState();
-});
-
-document.getElementById('refreshBtn').addEventListener('click', () => {
-  renderDashboard();
-});
-
-document.getElementById('incidentForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-
-  const state = loadState();
-  state.incidents.unshift({
-    name: formData.get('name'),
-    department: formData.get('department'),
-    type: formData.get('type'),
-    severity: formData.get('severity'),
-    description: formData.get('description'),
-    action: formData.get('action'),
-  });
-
-  setState(state);
-  form.reset();
-});
-
-document.getElementById('ppeForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-
-  const state = loadState();
-  state.ppe.unshift({
-    workerName: formData.get('workerName'),
-    ppeCategory: formData.get('ppeCategory'),
-    ppeStatus: formData.get('ppeStatus'),
-  });
-
-  setState(state);
-  form.reset();
-});
-
-document.getElementById('resetDataBtn').addEventListener('click', () => {
-  const confirmReset = window.confirm('Apakah Anda ingin mengembalikan data demo ke kondisi awal?');
-  if (!confirmReset) return;
-
-  const state = JSON.parse(JSON.stringify(defaultData));
-  setState(state);
-});
-
-renderLoginState();
-if (isAuthenticated()) {
-  renderDashboard();
-}
+## Kesimpulan
+Project ini siap untuk deployment gratis tanpa login/password karena berbasis HTML statis dan localStorage. Anda cukup upload ke GitHub Pages, Netlify, atau Vercel dan situs akan langsung online.
