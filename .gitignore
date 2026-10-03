@@ -1,0 +1,92 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Production
+/build
+/dist
+/out
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.pem
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.netbeans/
+
+# OS
+Thumbs.db
+.DS_Store
+*.lnk
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Git
+.git/
+
+# Node
+npm-debug.log*
+yarn-debug.log*
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# IDE specific files
+.vscode/settings.json
+.vscode/extensions.json
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Keep important files
+!.gitkeep
+!.env.example
